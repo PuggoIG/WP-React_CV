@@ -12,15 +12,19 @@ export class CV extends Component {
 
     componentDidMount(){
         axios.get('http://localhost:8000/wp-json/wp/v2/cvs')
-            .then(res => this.setState({
+            .then(res => 
+              this.setState({
                 CV: res.data,
                 isLoaded:true
             }))
             .catch(err => console.log(err));
+            
+            
     }
 
   render() {
       const {CV, isLoaded} =this.state;
+      
       if(isLoaded){
           return(
             <div>

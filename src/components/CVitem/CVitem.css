@@ -63,7 +63,7 @@
     margin-top: 3rem;
     background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("http:\/\/localhost:8000\/wp-content\/uploads\/2019\/04\/mountain-1024x576.jpg");
     background-attachment: fixed;
-    background-repeat: no-repeat;
+    background-repeat:repeat;
     background-position: 100% 0%;
     height: 26rem;
 }

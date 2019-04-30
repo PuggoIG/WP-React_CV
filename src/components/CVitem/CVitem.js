@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import{Row,Col,CardPanel} from 'react-materialize'
 
 import './CVitem.css'
 
 
 export class CVitem extends Component {
-    state= {
-        imgURL: '',
-        author: '',
+    state= {       
         isLoaded: false
         
     }
@@ -19,24 +16,16 @@ export class CVitem extends Component {
     }           
 
     componentDidMount(){
-        const {acf , author} = this.props.cv;
-        const getImageURL= axios.get(`http://localhost:8000/wp-json/wp/v2/media/${acf.profile_photo.id}`);
-        const getAuthor = axios.get(`http://localhost:8000/wp-json/wp/v2/users/${author}`)
-
-        Promise.all([getImageURL,getAuthor]).then(res =>{
-            this.setState({
-                imgURL: res[0].data.media_details.sizes.full.source_url,
-                author: res[1].data.name,
-                isLoaded: true
-            })
-        })
+          this.setState({             
+              isLoaded: true
+          })      
     }
  
     
 
     render() {
-    const {title, acf} = this.props.cv
-    const {author, imgURL, isLoaded}= this.state;
+    const { acf} = this.props.cv
+    const {isLoaded}= this.state;
 
     if(isLoaded){
         return (
@@ -51,7 +40,7 @@ export class CVitem extends Component {
                         <Row>                         
                           <Col l={3} m={3} s={6} className='profile_photo_container'>
                             <CardPanel className='photoName  blue-grey darken-4'>
-                              <img className='profile_photo' src={imgURL} alt="{title.rendered}"/>
+                              <img className='profile_photo' src={acf.profile_photo.url} alt="{title.rendered}"/>
                               <p className='strongo'>{acf.name}</p> 
                               <p>{acf.position}</p>
                             </CardPanel>
@@ -140,7 +129,8 @@ export class CVitem extends Component {
                   <Col l={1} m={1} s={1}></Col>
                 </Row>
               </div>
-            </div>            
+            </div> 
+              
           </div>
           
         );
