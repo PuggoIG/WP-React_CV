@@ -40,9 +40,13 @@ export class CVitem extends Component {
                         <Row>                         
                           <Col l={3} m={3} s={6} className='profile_photo_container'>
                             <CardPanel className='photoName  blue-grey darken-4'>
+                              <div className='imgcont'>                          
                               <img className='profile_photo' src={acf.profile_photo.url} alt="{title.rendered}"/>
+                              </div>
+                              <div className='pos-name-cont'>
                               <p className='strongo'>{acf.name}</p> 
                               <p>{acf.position}</p>
+                              </div>
                             </CardPanel>
                           </Col>                        
                           <Col l={9} m={9} s={6} className='contacts'>
